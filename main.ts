@@ -19,10 +19,15 @@ input.onButtonPressed(Button.B, function () {
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     radio.sendNumber(compassDirection)
 })
+let rollValue = 0
+let pitchValue = 0
 let compassDirection = 0
 let counter = 0
 radio.setGroup(1)
 basic.clearScreen()
 basic.forever(function () {
     compassDirection = input.compassHeading()
+    pitchValue = input.rotation(Rotation.Pitch)
+    rollValue = input.rotation(Rotation.Roll)
+    led.plot(pitchValue, rollValue)
 })
